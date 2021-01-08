@@ -1,1 +1,0 @@
-// container to map out each product

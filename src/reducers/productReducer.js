@@ -1,4 +1,4 @@
-export default (state = {items: [], loading: false}, action) => {
+export default (state = {products: [], loading: false}, action) => {
     switch(action.type) {
         default: 
             return state
