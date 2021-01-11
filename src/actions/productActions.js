@@ -1,3 +1,5 @@
+// maybe use https://fakestoreapi.com/
+
 export const getAllProducts = () => {
     return (dispatch) => {
       dispatch({ type: 'LOADING_DID_MOUNT'})
