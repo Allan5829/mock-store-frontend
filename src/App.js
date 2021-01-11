@@ -1,4 +1,4 @@
-import './App.css';
+import './cssFolder/App.css';
 import React, { Component } from 'react'
 import ProductsContainer from './containers/ProductsContainer'
 

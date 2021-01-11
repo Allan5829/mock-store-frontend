@@ -1,1 +1,0 @@
-// each indvidual product
