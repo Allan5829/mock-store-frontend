@@ -1,4 +1,5 @@
 import './cssFolder/App.css';
+import './cssFolder/ProductContainer.css';
 import React, { Component } from 'react'
 import ProductsContainer from './containers/ProductsContainer'
 
@@ -9,7 +10,10 @@ class App extends Component {
         <header className="App-header">
           <h2> test </h2>
         </header>
-        < ProductsContainer />
+        <div className="all-product"> 
+          < ProductsContainer /> 
+        </div>
+        
       </div>
     );
   }   

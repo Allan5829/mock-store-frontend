@@ -1,8 +1,11 @@
 .square-box{
+    border: 1px solid black ;
+    float: left;
     position: relative;
-    width: 50%;
+    width: 20%;
     overflow: hidden;
-    background: #4679BD;
+    background: white;
+    padding: 5px 5px;
 }
 .square-box:before{
     content: "";
@@ -26,5 +29,5 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    color: white
+    color: black
 }
