@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { getAllProducts } from '../actions/productActions'
 import ProductComponent from '../components/ProductComponent'
 
+import { Route } from 'react-router-dom';
+import ProductShow from '../components/ProductShow'
+
 class ProductsContainer extends Component {
 
     componentDidMount() {
@@ -18,7 +21,8 @@ class ProductsContainer extends Component {
 
         return (
             <div>
-            { this.props.loading ? "Loading..." : allProducts }
+                <Route exact path={this.props.match.url} render={() => <div> { this.props.loading ? "Loading..." : allProducts } </div>}/>
+                <Route path={`${this.props.match.url}/:productId`} render={routerProps => <ProductShow {...routerProps} products={this.props.products} /> }/>
             </div>
         )
     }

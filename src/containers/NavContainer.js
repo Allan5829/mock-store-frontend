@@ -12,7 +12,7 @@ class NavContainer extends Component {
         <div>
           <NavBar />
           <Route exact path="/" render={() => <Home/>} />
-          <Route path='/products' render={() => <ProductAndFilterContainer/>} />
+          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps}/>} />
         </div>
       </Router>
     );
