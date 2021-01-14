@@ -1,9 +1,12 @@
+import '../cssFolder/ProductNew.css'
 import React from 'react';
+import { Link } from 'react-router-dom';
  
 const ProductNew = (props) => {
 
     return (
         <div>
+            <Link onClick={props.backButton} to={`/admin`}> Back </Link> 
             <h3> Add New Product </h3>
             <br/>
             <form>

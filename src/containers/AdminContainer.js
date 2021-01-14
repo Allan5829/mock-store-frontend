@@ -11,7 +11,7 @@ class AdminContainer extends Component {
     }
 
     handleClick = event => {
-        console.log(event.target.id)
+        //console.log(event.target.id)
         this.setState({
             displayComponent: true,
             currentComponent: event.target.id
@@ -19,20 +19,32 @@ class AdminContainer extends Component {
         
     }
 
+    handleBackButton = event => {
+        //console.log("do i see me")
+        this.setState({
+            displayComponent: false,
+            currentComponent: ""
+        })
+    }
+
     render() {
 
         let test = "I shouldn't see this"
 
         if (this.state.currentComponent === 'ProductNew') {
-            test = <ProductNew/>
+            test = <ProductNew backButton={this.handleBackButton}/>
         }
+
+        const links = [
+            "admin text", <br/>,
+            <Link onClick={this.handleClick} id='ProductNew' to={`/admin/product_new`}> Add New Product </Link>,
+            <br/>,
+            <Link onClick={this.handleClick} id='ProductNew' to={`/admin/product_new`}> Add New Product </Link>
+        ]
 
         return (
             <div>
-                "admin container"
-                <br/>
-                <Link onClick={this.handleClick} id='ProductNew' to={`/admin/product_new`}> Add New Product </Link>
-                {this.state.displayComponent ? test : null }
+                {this.state.displayComponent ? test : links }
             </div>
         );
     }
