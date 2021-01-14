@@ -16,6 +16,12 @@ const NavBar = () => {
       >
         Products
       </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/admin"
+      >
+        Admin
+      </NavLink>
     </div>
   );
 }
