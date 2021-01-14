@@ -11,6 +11,7 @@ class ProductsContainer extends Component {
 
     componentDidMount() {
         this.props.getAllProducts()
+        console.log(this.props.filterTerm)
     }
 
     render() {

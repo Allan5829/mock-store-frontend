@@ -35,6 +35,8 @@ class AdminContainer extends Component {
             test = <ProductNew backButton={this.handleBackButton}/>
         }
 
+        //
+
         // turn into component
         const links = [
             "admin text", <br/>,

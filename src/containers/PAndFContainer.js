@@ -2,13 +2,14 @@ import '../cssFolder/ProductContainer.css';
 import React from 'react';
 import ProductsContainer from './ProductsContainer'
 
-const ProductAndFilterContainer = ({match}) => {
+const ProductAndFilterContainer = ({match, filterTerm}) => {
+    console.log(match, filterTerm)
     return (
        <div>
             <div className="filter-container">
             </div>
             <div className="all-product"> 
-                < ProductsContainer match={match} /> 
+                < ProductsContainer match={match} filterTerm={filterTerm}/> 
             </div> 
         </div> 
     )

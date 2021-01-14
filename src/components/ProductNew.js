@@ -1,6 +1,6 @@
 import '../cssFolder/ProductNew.css'
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import history from '../history';
  
 class ProductNew extends Component {
@@ -23,16 +23,19 @@ class ProductNew extends Component {
         })
     }
 
+    redirectToAdmin = () => {
+        history.push('/products')
+    }
+
     handleSubmit = event => {
         event.preventDefault();
-        //this.props.backButton();
-        history.push('/products')
+        this.redirectToAdmin()
     }
 
     render() {
         return (
             <div>
-                <Link onClick={this.props.backButton} to={`/admin`}> Back </Link> 
+                <button onClick={this.redirectToAdmin}> Back </button> 
                 <h3> Add New Product </h3>
                 <br/>
                 <form onSubmit={this.handleSubmit}> 

@@ -1,6 +1,8 @@
 import React from 'react';
  
 const ProductShow = ({match, products}) => {
+    //debugger
+    //console.log(products, match.params )
     let p = products[match.params.productId - 1]
     return (
         <div>

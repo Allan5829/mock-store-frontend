@@ -22,6 +22,18 @@ const NavBar = () => {
       >
         Admin
       </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/men"
+      >
+        Men
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/women"
+      >
+        Women
+      </NavLink>
     </div>
   );
 }
