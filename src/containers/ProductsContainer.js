@@ -29,7 +29,6 @@ class ProductsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    //console.log(state)
     return {
         products: state.productReducer.products,
         loading: state.loading
