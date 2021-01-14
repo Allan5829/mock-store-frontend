@@ -35,6 +35,7 @@ class AdminContainer extends Component {
             test = <ProductNew backButton={this.handleBackButton}/>
         }
 
+        // turn into component
         const links = [
             "admin text", <br/>,
             <Link onClick={this.handleClick} id='ProductNew' to={`/admin/product_new`}> Add New Product </Link>,
