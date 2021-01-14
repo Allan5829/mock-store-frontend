@@ -38,7 +38,7 @@ class AdminContainer extends Component {
         // turn into component
         const links = [
             "admin text", <br/>,
-            <Link onClick={this.handleClick} id='ProductNew' to={`/admin/product_new`}> Add New Product </Link>,
+            <Link onClick={this.handleClick} id='ProductNew' > Add New Product </Link>,
             <br/>,
             <Link onClick={this.handleClick} id='ProductNew' to={`/admin/product_new`}> Add New Product </Link>
         ]

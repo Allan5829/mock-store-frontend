@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import history from '../history';
 
 import ProductAndFilterContainer from './PAndFContainer'
 import Home from '../components/HomeComponent'
@@ -9,7 +10,7 @@ import AdminContainer from './AdminContainer'
 class NavContainer extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <div>
           <NavBar />
           <Route exact path="/" render={() => <Home/>} />

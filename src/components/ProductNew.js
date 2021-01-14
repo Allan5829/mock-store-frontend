@@ -1,6 +1,7 @@
 import '../cssFolder/ProductNew.css'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import history from '../history';
  
 class ProductNew extends Component {
 
@@ -24,7 +25,8 @@ class ProductNew extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.backButton();
+        //this.props.backButton();
+        history.push('/products')
     }
 
     render() {
