@@ -24,8 +24,7 @@ class App extends Component {
         <header className="App-header">
           <h2> Website </h2>
         </header>
-        <button onClick={this.switchAdmin}> Admin Switch </button>
-        {this.state.admin ? <AdminNavContainer/> : <NavContainer/>}
+        {this.state.admin ? <AdminNavContainer switchAdmin={this.switchAdmin}/> : <NavContainer switchAdmin={this.switchAdmin}/>}
       </div>
     )
   }

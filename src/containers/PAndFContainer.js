@@ -3,7 +3,6 @@ import React from 'react';
 import ProductsContainer from './ProductsContainer'
 
 const ProductAndFilterContainer = ({match, filterTerm}) => {
-    console.log(match, filterTerm)
     return (
        <div>
             <div className="filter-container">

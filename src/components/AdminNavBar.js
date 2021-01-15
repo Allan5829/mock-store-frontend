@@ -12,13 +12,13 @@ const NavBar = () => {
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/admin/products"
+        to="/products"
       >
         Products
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/admin/products/new"
+        to="/admin/products_new"
       >
         Add Products
       </NavLink>

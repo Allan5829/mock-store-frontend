@@ -12,31 +12,31 @@ const NavBar = () => {
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/men"
+        to="/products"
       >
         Men
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/women"
+        to="/products"
       >
         Women
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/top"
+        to="/products"
       >
         Tops
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/bottom"
+        to="/products"
       >
         Bottoms
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/accessory"
+        to="/products"
       >
         Accessory
       </NavLink>

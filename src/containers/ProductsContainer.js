@@ -11,7 +11,7 @@ class ProductsContainer extends Component {
 
     componentDidMount() {
         this.props.getAllProducts()
-        console.log(this.props.filterTerm)
+        console.log(this.props.match, this.props.match.url)
     }
 
     render() {
