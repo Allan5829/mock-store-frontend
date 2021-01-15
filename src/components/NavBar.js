@@ -12,18 +12,6 @@ const NavBar = () => {
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/products"
-      >
-        Products
-      </NavLink>
-      <NavLink 
-        style={{ marginRight: '10px' }} 
-        to="/admin"
-      >
-        Admin
-      </NavLink>
-      <NavLink 
-        style={{ marginRight: '10px' }} 
         to="/men"
       >
         Men
@@ -33,6 +21,24 @@ const NavBar = () => {
         to="/women"
       >
         Women
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/top"
+      >
+        Tops
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/bottom"
+      >
+        Bottoms
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/accessory"
+      >
+        Accessory
       </NavLink>
     </div>
   );

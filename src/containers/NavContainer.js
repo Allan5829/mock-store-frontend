@@ -17,10 +17,11 @@ class NavContainer extends Component {
         <div>
           <NavBar />
           <Route exact path="/" render={() => <Home/>} />
-          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"none"} />} />
           <Route path='/men' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"men"} />} />
           <Route path='/women' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"women"} />} />
-          <Route path='/admin' render={routerProps => <AdminContainer {...routerProps}/>} />
+          <Route path='/top' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"top"} />} />
+          <Route path='/bottom' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"bottom"} />} />
+          <Route path='/accessory' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"accessory"} />} />
         </div>
       </Router>
     );

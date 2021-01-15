@@ -5,9 +5,7 @@ import history from '../history';
 
 import ProductAndFilterContainer from './PAndFContainer'
 import AdminHome from '../components/AdminHomeComponent'
-//import AdminContainer from './AdminContainer'
-
-// might end up taking out <Route path='/admin' render={routerProps => <AdminContainer {...routerProps}/>} />
+import ProductNew from '../components/ProductNew'
 
 class AdminNavContainer extends Component {
   render() {
@@ -17,6 +15,7 @@ class AdminNavContainer extends Component {
           <AdminNavBar />
           <Route exact path="/admin" render={() => <AdminHome/>} />
           <Route path='/admin/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"none"} />} />
+          <Route path='/admin/products/new' render={routerProps => <ProductNew {...routerProps}/>} />
         </div>
       </Router>
     );
