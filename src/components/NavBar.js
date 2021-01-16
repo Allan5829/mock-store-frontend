@@ -29,14 +29,14 @@ const NavBar = (props) => {
         to="/products"
         onClick={props.handleClick}
       >
-        Tops
+        Top
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
         to="/products"
         onClick={props.handleClick}
       >
-        Bottoms
+        Bottom
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 

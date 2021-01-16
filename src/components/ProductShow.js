@@ -2,7 +2,7 @@ import React from 'react';
  
 const ProductShow = ({match, products}) => {
     //console.log(products, match )
-    let p = products[match.params.productId - 1]
+    let p = products.filter(p => p.id == match.params.productId )[0]
     //console.log(p)
     return (
         <div>

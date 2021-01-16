@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Router, Route, Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import history from '../history';
+import { connect } from 'react-redux'
+import { updateNavFilter } from '../actions/productActions'
 
 import ProductAndFilterContainer from './PAndFContainer'
 import Home from '../components/HomeComponent'
@@ -13,10 +15,11 @@ class NavContainer extends Component {
   }
 
   handleClick = (event) => {
-    console.log(event.target.innerText)
     this.setState({
       filterTerm: event.target.innerText
     })
+    //this.props.updateNavFilter(this.state.filterTerm)
+    //this.forceUpdate()
   }
 
   render() {
@@ -33,4 +36,4 @@ class NavContainer extends Component {
   }
 }
 
-export default NavContainer;
+export default connect(null, { updateNavFilter })(NavContainer);

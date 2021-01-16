@@ -1,11 +1,17 @@
 // maybe use https://fakestoreapi.com/
 
-export const getAllProducts = () => {
+export const getAllProducts = (filterTerm) => {
     return (dispatch) => {
       dispatch({ type: 'LOADING_DID_MOUNT'})
       fetch('products')
       .then(response => response.json())
-      .then(p => dispatch({ type: 'INDEX_PRODUCTS', payload: p }))
+      .then(p => dispatch({ type: 'INDEX_PRODUCTS', payload: p, filterBy: filterTerm }))
+    }
+  }
+
+export const updateNavFilter = (filterTerm) => {
+    return (dispatch) => {
+      dispatch({ type: 'NAV_FILTER_UPDATE', filterBy: filterTerm})
     }
   }
 
