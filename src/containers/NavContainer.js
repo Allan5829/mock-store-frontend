@@ -7,18 +7,26 @@ import ProductAndFilterContainer from './PAndFContainer'
 import Home from '../components/HomeComponent'
 
 class NavContainer extends Component {
+
+  state ={
+    filterTerm: "none"
+  }
+
+  handleClick = (event) => {
+    console.log(event.target.innerText)
+    this.setState({
+      filterTerm: event.target.innerText
+    })
+  }
+
   render() {
     return (
       <Router history={history}>
         <div>
           <Link onClick={() => this.props.switchAdmin()} to={`/admin`}> Admin Switch </Link>
-          <NavBar />
+          <NavBar handleClick={this.handleClick} />
           <Route exact path="/" render={() => <Home/>} />
-          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"men"} />} />
-          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"women"} />} />
-          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"top"} />} />
-          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"bottom"} />} />
-          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={"accessory"} />} />
+          <Route path='/products' render={routerProps => <ProductAndFilterContainer {...routerProps} filterTerm={this.state.filterTerm}/>} />
         </div>
       </Router>
     );

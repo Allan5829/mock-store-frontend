@@ -1,4 +1,3 @@
-// container to map out each product
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAllProducts } from '../actions/productActions'
@@ -11,10 +10,10 @@ class ProductsContainer extends Component {
 
     componentDidMount() {
         this.props.getAllProducts()
-        console.log(this.props.match, this.props.match.url)
     }
 
     render() {
+        console.log(this.props.filterTerm)
 
         const allProducts = this.props.products.map( p => {
             return < ProductComponent key={p.id} product={p}/>
