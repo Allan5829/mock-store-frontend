@@ -18,8 +18,7 @@ class NavContainer extends Component {
     this.setState({
       filterTerm: event.target.innerText
     })
-    //this.props.updateNavFilter(this.state.filterTerm)
-    //this.forceUpdate()
+    this.props.updateNavFilter(this.state.filterTerm) // not needed currently
   }
 
   render() {
