@@ -2,6 +2,8 @@ import '../cssFolder/ProductNew.css'
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import history from '../history';
+import { connect } from 'react-redux'
+import { addNewProduct } from '../actions/productActions'
  
 class ProductNew extends Component {
 
@@ -29,7 +31,17 @@ class ProductNew extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.redirectToAdmin()
+        //this.redirectToAdmin()
+        const product = { name: this.state.name, price: this.state.price, image: this.state.image,
+            size: this.state.size, color: this.state.color, main_category: this.state.main_category, 
+            sub_category: this.state.sub_category, gender: this.state.gender
+        }
+        this.props.addNewProduct(product)
+        this.setState({
+            name: "",
+            price: "",
+            image: ""
+        })
     }
 
     render() {
@@ -120,4 +132,4 @@ class ProductNew extends Component {
     }
 }
  
-export default ProductNew;
+export default connect(null, { addNewProduct } )(ProductNew)
