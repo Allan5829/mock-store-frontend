@@ -26,9 +26,16 @@ class ProductsContainer extends Component {
     }
 
     editSlice = page => {
+        console.log(page)
+        if (page * 8 === this.state.sliceEnd) {
+            console.log("nope")
+        } else {
+            console.log("yep")
+            
+        }
         //set state
 
-        //console.log( ~~(41 / 8), 41%8 )
+        
     }
 
     render() {
@@ -45,7 +52,6 @@ class ProductsContainer extends Component {
                     <div> { this.props.loading ? "Loading..." : allProducts } </div>}/>
                 <Route path={`${this.props.match.url}/:productId`} render={routerProps => 
                     <ProductShow {...routerProps} products={this.props.products} /> }/>
-                { this.props.loading ? "Loading..." : console.log(pageCount) }
                 { this.props.loading ? null : < PageBar pages={pageCount} changePage={this.editSlice}/> }
             </div>
         )
