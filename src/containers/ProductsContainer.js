@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllProducts } from '../actions/productActions'
+import { getAllProducts, updateCurrentPage } from '../actions/productActions'
 import ProductComponent from '../components/ProductComponent'
 
 import { Route } from 'react-router-dom';
@@ -17,22 +17,15 @@ class ProductsContainer extends Component {
     shouldComponentUpdate(nextProps) {
         if(this.props.filterTerm !== nextProps.filterTerm) {
             this.props.getAllProducts(nextProps.filterTerm)
-            
         }
         return true
     }
 
     editSlice = page => {
-        console.log(page)
         if (page * 8 === this.props.sliceEnd) {
-            console.log("nope")
+            // Nothing happens from clicking to view a page the user is already on
         } else {
-            console.log("yep")
-            if (page === 1) {
-   
-            } else {
-
-            }
+            this.props.updateCurrentPage(page)
         }
     }
 
@@ -76,4 +69,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getAllProducts } )(ProductsContainer);
+export default connect(mapStateToProps, { getAllProducts, updateCurrentPage } )(ProductsContainer);
