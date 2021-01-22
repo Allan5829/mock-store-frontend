@@ -121,7 +121,7 @@ class ProductNew extends Component {
                     <select id="gender" name="gender"
                         value={this.state.gender} onChange={this.handleChange}>
                         <option value="Men">Men</option>
-                        <option value="Woman">Woman</option>
+                        <option value="Women">Women</option>
                     </select>
                     <br/>
                 
