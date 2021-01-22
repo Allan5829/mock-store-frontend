@@ -10,9 +10,9 @@ export const getAllProducts = (filterTerm) => {
     }
   }
 
-export const updateNavFilter = (filterTerm) => {
+export const updateCurrentPage = (page) => {
     return (dispatch) => {
-      dispatch({ type: 'NAV_FILTER_UPDATE', filterBy: filterTerm})
+      dispatch({ type: 'UPDATE_PAGE', payload: page})
     }
   }
 

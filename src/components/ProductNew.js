@@ -26,7 +26,7 @@ class ProductNew extends Component {
     }
 
     redirectToAdmin = () => {
-        history.push('/products')
+        history.push('/admin')
     }
 
     handleSubmit = event => {

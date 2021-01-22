@@ -6,6 +6,7 @@ import ProductComponent from '../components/ProductComponent'
 import { Route } from 'react-router-dom';
 import ProductShow from '../components/ProductShow'
 import PageBar from '../components/PageBar'
+//import '../cssFolder/ProductContainer.css';
 
 class ProductsContainer extends Component {
 
@@ -45,11 +46,17 @@ class ProductsContainer extends Component {
 
         return (
             <div>
-                <Route exact path={this.props.match.url} render={() => 
-                    <div> { this.props.loading ? "Loading..." : allProducts } </div>}/>
-                <Route path={`${this.props.match.url}/:productId`} render={routerProps => 
-                    <ProductShow {...routerProps} products={this.props.products} /> }/>
-                < PageBar pages={pageCount} changePage={this.editSlice}/>
+                <div className="filter-container">
+                </div>
+                <div className="all-product"> 
+                     <Route exact path={this.props.match.url} render={() => 
+                        <div> { this.props.loading ? "Loading..." : allProducts } </div>}/>
+                    <Route path={`${this.props.match.url}/:productId`} render={routerProps => 
+                        <ProductShow {...routerProps} products={this.props.products} /> }/>
+                </div> 
+                <div className="page-bar"> 
+                    < PageBar pages={pageCount} changePage={this.editSlice}/> 
+                </div>
             </div>
         )
     }

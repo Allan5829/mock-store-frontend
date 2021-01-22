@@ -31,6 +31,9 @@ export default (state = {products: [], loading: false, sliceStart: '0', sliceEnd
 
         case ('PRODUCT_ADDED'):
             return { ...state, loading: false, products: [...state.products, action.payload] }
+
+        case ('UPDATE_PAGE'):
+            return{...state}
         
         default: 
             return state
