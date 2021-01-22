@@ -45,6 +45,13 @@ const NavBar = (props) => {
       >
         Accessory
       </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/admin"
+        onClick={props.switchAdmin}
+      >
+        Admin Mode
+      </NavLink>
     </div>
   );
 }

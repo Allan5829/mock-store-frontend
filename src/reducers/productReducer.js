@@ -33,13 +33,7 @@ export default (state = {products: [], loading: false, sliceStart: 0, sliceEnd: 
             return { ...state, loading: false, products: [...state.products, action.payload] }
 
         case ('UPDATE_PAGE'):
-            switch(action.payload) {
-                case(1):
-                    return {...state, sliceStart: 0, sliceEnd: 8}
-
-                default:
-                    return {...state, sliceStart: ((action.payload - 1) * 8), sliceEnd: (action.payload * 8)}
-            }
+            return {...state, sliceStart: ((action.payload - 1) * 8), sliceEnd: (action.payload * 8)}
         
         default: 
             return state

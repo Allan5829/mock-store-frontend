@@ -1,3 +1,4 @@
+import '../cssFolder/ProductContainer.css';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAllProducts, updateCurrentPage } from '../actions/productActions'
@@ -6,7 +7,6 @@ import ProductComponent from '../components/ProductComponent'
 import { Route } from 'react-router-dom';
 import ProductShow from '../components/ProductShow'
 import PageBar from '../components/PageBar'
-//import '../cssFolder/ProductContainer.css';
 
 class ProductsContainer extends Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
       <NavLink 
@@ -21,6 +21,13 @@ const NavBar = () => {
         to="/admin/products_new"
       >
         Add Products
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/"
+        onClick={props.switchAdmin}
+      >
+        Consumer Mode
       </NavLink>
     </div>
   );

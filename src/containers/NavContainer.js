@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Router, Route, Link } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import history from '../history';
 
 import ProductsContainer from './ProductsContainer'
 import Home from '../components/HomeComponent'
+import AdminNavContainer from './AdminNavContainer'
 
 class NavContainer extends Component {
 
@@ -22,8 +23,7 @@ class NavContainer extends Component {
     return (
       <Router history={history}>
         <div>
-          <Link onClick={() => this.props.switchAdmin()} to={`/admin`}> Admin Switch </Link>
-          <NavBar handleClick={this.handleClick} />
+          <NavBar handleClick={this.handleClick} switchAdmin={this.props.switchAdmin}/>
           <Route exact path="/" render={() => <Home/>} />
           <Route path='/products' render={routerProps => <ProductsContainer {...routerProps} filterTerm={this.state.filterTerm}/>} />
         </div>
