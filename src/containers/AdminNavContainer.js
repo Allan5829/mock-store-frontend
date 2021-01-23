@@ -6,7 +6,6 @@ import history from '../history';
 import ProductsContainer from './ProductsContainer'
 import AdminHome from '../components/AdminHomeComponent'
 import ProductNew from '../components/ProductNew'
-import NavContainer from './NavContainer'
  
 class AdminNavContainer extends Component {
   render() {

@@ -5,7 +5,6 @@ import history from '../history';
 
 import ProductsContainer from './ProductsContainer'
 import Home from '../components/HomeComponent'
-import AdminNavContainer from './AdminNavContainer'
 
 class NavContainer extends Component {
 

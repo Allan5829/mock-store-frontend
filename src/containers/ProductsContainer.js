@@ -12,12 +12,20 @@ class ProductsContainer extends Component {
 
     componentDidMount() {
         this.props.getAllProducts(this.props.filterTerm)
+        showPageBar = true
     }
 
     shouldComponentUpdate(nextProps) {
-        if(this.props.filterTerm !== nextProps.filterTerm) {
+        // Triggers when user is (for example) viewing Men's products and clicks to view Women's products
+        if (this.props.filterTerm !== nextProps.filterTerm) {
             this.props.getAllProducts(nextProps.filterTerm)
         }
+
+        // Hides PageBar component so it doesn't appear in the ProductShow component
+        if (this.props.location.pathname !== nextProps.location.pathname) {
+            nextProps.location.pathname === "/products" ? showPageBar = true : showPageBar = false
+        }
+
         return true
     }
 
@@ -48,13 +56,19 @@ class ProductsContainer extends Component {
                         <ProductShow {...routerProps} products={this.props.products} /> }/>
                 </div> 
                 <div className="page-bar"> 
-                    < PageBar pages={pageCount} changePage={this.editSlice}/> 
+                    { showPageBar ? < PageBar pages={pageCount} changePage={this.editSlice}/> : null }
                 </div>
             </div>
         )
     }
 } 
 
+// showPagebar used to determine whether or not PageBar appears
+// Uses variable instead of local state because state would have to be updated in shouldComponentUpdate
+// Would be more work to keep track in Store's state
+let showPageBar 
+
+// size used to determine how many buttons PageBar contains and for quicker access to data
 let size
 
 const mapStateToProps = state => {
