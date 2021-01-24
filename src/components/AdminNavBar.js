@@ -24,6 +24,12 @@ const NavBar = (props) => {
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
+        to="/admin/products_delete"
+      >
+        Delete Products
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
         to="/"
         onClick={props.switchAdmin}
       >
