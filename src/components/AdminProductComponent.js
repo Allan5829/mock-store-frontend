@@ -5,8 +5,8 @@ const AdminProductComponent = props => {
 
     return (
         <p> 
-            {p.id} - Name: {p.name} - ${p.price} - Size: {p.size} - <button 
-                onClick={() => props.deleteProduct(p.id)}> Delete </button>
+            {p.id} - {p.name} - ${p.price} - {p.size} - {p.color} - {p.gender} - {p.main_category} - {
+                p.sub_category} - <button onClick={() => props.deleteProduct(p.id)}> Delete </button>
         </p> 
     )
 } 

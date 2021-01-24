@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+.app-body{
+  background: linear-gradient(270deg, #ff914d 0%, rgba(0, 0, 0, 0) 20%), 
+              linear-gradient(90deg, #ff914d 0%, rgba(0, 0, 0, 0) 20%)
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

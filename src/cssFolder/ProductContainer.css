@@ -8,9 +8,17 @@
     right: 25%;
     left: 25%;
 }
+
 .admin-page-bar{
     position:absolute;
     bottom: 100px;
     right: 25%;
     left: 25%;
+}
+.admin-products{
+    text-align: left;
+    display: inline-block;
+}
+.admin-products-background{
+    background-color: rgba(176, 239, 255, 0.507);
 }

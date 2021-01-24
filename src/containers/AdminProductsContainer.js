@@ -21,8 +21,7 @@ class AdminProductsContainer extends Component {
     }
 
     deleteProductAction = event => {
-        console.log(event)
-        // this.props.deleteProduct(event)
+        this.props.deleteProduct(event)
     }
 
     render() {
@@ -34,8 +33,12 @@ class AdminProductsContainer extends Component {
         })
 
         return (
-            <div>
-                { this.props.loading ? "Loading..." : allProducts }
+            <div className="admin-products-background">
+                <div className="admin-products"> 
+                    <p> Number - Name - Price - Size - Color - Gender - Main Category - Sub Category - 
+                        Delete Button </p>
+                    { this.props.loading ? "Loading..." : allProducts }
+                </div>
                 <div className="admin-page-bar"> 
                     < PageBar pages={pageCount} changePage={this.editSlice}/>
                 </div>

@@ -23,7 +23,9 @@ class App extends Component {
         <header className="App-header">
           <h2> Mock Store </h2>
         </header>
-        {this.state.admin ? <AdminNavContainer switchAdmin={this.switchAdmin}/> : <NavContainer switchAdmin={this.switchAdmin}/>}
+        <div className="app-body"> 
+          {this.state.admin ? <AdminNavContainer switchAdmin={this.switchAdmin}/> : <NavContainer switchAdmin={this.switchAdmin}/>}
+        </div>
       </div>
     )
   }

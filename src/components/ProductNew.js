@@ -37,6 +37,7 @@ class ProductNew extends Component {
             sub_category: this.state.sub_category, gender: this.state.gender
         }
         this.props.addNewProduct(product)
+        alert("Product Added!");
         this.setState({
             name: "",
             price: "",
