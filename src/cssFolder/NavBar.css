@@ -1,0 +1,14 @@
+.nav-bar{
+    border-Bottom: 2px solid black;
+    padding-Top: 5px;
+    padding-Bottom: 5px;
+}
+.nav-link-margin{
+    margin-Right: 10px;
+}
+.consumer{
+    background-Color: rgb(250, 232, 174);
+}
+.admin{
+    background-Color: rgb(247, 161, 128);
+}
