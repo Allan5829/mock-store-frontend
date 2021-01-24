@@ -31,3 +31,17 @@ export const addNewProduct = (product) => {
       .then(p => dispatch({ type: 'PRODUCT_ADDED', payload: p }))
     }
   }
+
+export const deleteProduct = (id) => {
+    return dispatch => {
+        dispatch({ type: "DELETING_PRODUCT" })
+        fetch(URL + `/products/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                "Accept": 'application/json'
+            }
+        })
+        .then(() => dispatch({ type: "PRODUCT_DELETED", payload: id }))
+    }
+  }

@@ -34,6 +34,12 @@ export default (state = {products: [], loading: false, sliceStart: 0, sliceEnd: 
 
         case ('UPDATE_PAGE'):
             return {...state, sliceStart: ((action.payload - 1) * 8), sliceEnd: (action.payload * 8)}
+
+        case ('DELETING_PRODUCT'):
+            return { ...state, loading: true }
+        
+        case ('PRODUCT_DELETED'):
+            return { ...state, loading: false, products: state.products.filter(p => p.id != action.payload)}
         
         default: 
             return state

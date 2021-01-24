@@ -1,7 +1,7 @@
 import '../cssFolder/ProductContainer.css';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllProducts, updateCurrentPage } from '../actions/productActions'
+import { getAllProducts, updateCurrentPage, deleteProduct } from '../actions/productActions'
 
 import AdminProductComponent from '../components/AdminProductComponent'
 import PageBar from '../components/PageBar'
@@ -20,12 +20,17 @@ class AdminProductsContainer extends Component {
         }
     }
 
+    deleteProductAction = event => {
+        console.log(event)
+        // this.props.deleteProduct(event)
+    }
+
     render() {
 
         const pageCount = ~~(size / 8) + (size % 8 > 0 ? + 1 : + 0)
 
         const allProducts = this.props.products.slice(this.props.sliceStart, this.props.sliceEnd).map( p => {
-            return < AdminProductComponent key={p.id} product={p}/>
+            return < AdminProductComponent key={p.id} product={p} deleteProduct={this.deleteProductAction}/>
         })
 
         return (
@@ -54,4 +59,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getAllProducts, updateCurrentPage } )(AdminProductsContainer);
+export default connect(mapStateToProps, { getAllProducts, updateCurrentPage, deleteProduct } )(AdminProductsContainer);
