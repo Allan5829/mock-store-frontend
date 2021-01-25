@@ -1,12 +1,12 @@
+import '../cssFolder/ProductComponent.css';
 import React from 'react';
  
 const ProductShow = ({match, products}) => {
-    //console.log(products, match )
     let p = products.filter(p => p.id == match.params.productId )[0]
-    //console.log(p)
     return (
         <div className="product-details">
-            <img src={p.image} alt="Not Found" width="400" height="400"/> <br/>
+            <img src={p.image} alt="Not Found" width="400" height="400" className="product-show"/> 
+            <br/> <br/>
             ${p.price} - {p.name} <br/>
             Size: {p.size} <br/>
             Color: {p.color} <br/>

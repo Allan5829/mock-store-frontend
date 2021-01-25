@@ -1,0 +1,8 @@
+.home-component{
+    background: linear-gradient(270deg, #da6cac 00%, rgba(0, 0, 0, 0) 60%), 
+            linear-gradient(90deg, #da6cac 00%, rgba(0, 0, 0, 0) 60%)
+}
+.admin-home-component{
+    background: linear-gradient(270deg, #b277e2 00%, rgba(0, 0, 0, 0) 60%), 
+            linear-gradient(90deg, #b277e2 00%, rgba(0, 0, 0, 0) 60%)
+}
