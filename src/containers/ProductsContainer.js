@@ -46,7 +46,7 @@ class ProductsContainer extends Component {
         })
 
         return (
-            <div>
+            <div className="products-page">
                 <div className="filter-container">
                 </div>
                 <div className="all-product"> 

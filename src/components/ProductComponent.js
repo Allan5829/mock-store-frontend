@@ -12,7 +12,9 @@ const ProductComponent = props => {
                         <img src={p.image} alt="Not Found" width="200" height="200"/>
                     </Link>
                     <br/>
-                    {p.name} for {p.price} size: {p.size} 
+                    ${p.price} - {p.name}
+                    <br/>
+                    Size: {p.size} 
                 </span></div>
             </div>
         </div> 

@@ -9,16 +9,21 @@
     left: 25%;
 }
 
+.admin-products-gradient-background{
+    background: linear-gradient(270deg, #ff914d 00%, rgba(0, 0, 0, 0) 30%), 
+              linear-gradient(90deg, #ff914d 00%, rgba(0, 0, 0, 0) 30%)
+}
+.admin-products-background{
+    background-color: rgba(176, 239, 255, 0.507);
+}
+.admin-products{
+    text-align: left;
+    display: inline-block;
+    
+}
 .admin-page-bar{
     position:absolute;
     bottom: 100px;
     right: 25%;
     left: 25%;
-}
-.admin-products{
-    text-align: left;
-    display: inline-block;
-}
-.admin-products-background{
-    background-color: rgba(176, 239, 255, 0.507);
 }

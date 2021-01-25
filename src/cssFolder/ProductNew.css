@@ -3,7 +3,7 @@ input[type=text], select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 4px;
     box-sizing: border-box;
   }
@@ -25,6 +25,14 @@ input[type=text], select {
   
   form {
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    background-color: #dfffd5;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
   }
+
+.new-product-page{
+  background: linear-gradient(90deg, #58ff2e 0%, rgba(0, 0, 0, 0) 55%),
+              linear-gradient(270deg, #58ff2e 0%, rgba(0, 0, 0, 0) 55%)
+}

@@ -47,9 +47,9 @@ class ProductNew extends Component {
 
     render() {
         return (
-            <div>
+            <div className="new-product-page">
+                <h3> Add New Product </h3> 
                 <button onClick={this.redirectToAdmin}> Back </button> 
-                <h3> Add New Product </h3>
                 <br/>
                 <form onSubmit={this.handleSubmit}> 
                     <label htmlFor="name">Product Name</label>

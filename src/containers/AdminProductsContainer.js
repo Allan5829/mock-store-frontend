@@ -33,14 +33,16 @@ class AdminProductsContainer extends Component {
         })
 
         return (
-            <div className="admin-products-background">
-                <div className="admin-products"> 
-                    <p> Number - Name - Price - Size - Color - Gender - Main Category - Sub Category - 
-                        Delete Button </p>
-                    { this.props.loading ? "Loading..." : allProducts }
-                </div>
-                <div className="admin-page-bar"> 
-                    < PageBar pages={pageCount} changePage={this.editSlice}/>
+            <div className="admin-products-gradient-background">
+                <div className="admin-products-background">
+                    <div className="admin-products"> 
+                        <p> Number - Name - Price - Size - Color - Gender - Main Category - Sub Category - 
+                            Delete Button </p>
+                        { this.props.loading ? "Loading..." : allProducts }
+                    </div>
+                    <div className="admin-page-bar"> 
+                        < PageBar pages={pageCount} changePage={this.editSlice}/>
+                    </div>
                 </div>
             </div>
         )

@@ -12,9 +12,9 @@ class NavContainer extends Component {
     filterTerm: "none"
   }
 
-  handleClick = (event) => {
+  handleClick = filter => {
     this.setState({
-      filterTerm: event.target.innerText
+      filterTerm: filter
     })
   }
 

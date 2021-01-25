@@ -15,31 +15,31 @@ const NavBar = (props) => {
         <NavLink 
           className="nav-link-margin" 
           to="/products"
-          onClick={props.handleClick}
+          onClick={() => props.handleClick("Men")}
         > Men </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
           to="/products"
-          onClick={props.handleClick}
+          onClick={() => props.handleClick("Women")}
         > Women </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
           to="/products"
-          onClick={props.handleClick}
+          onClick={() => props.handleClick("Top")}
         > Top </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
           to="/products"
-          onClick={props.handleClick}
+          onClick={() => props.handleClick("Bottom")}
         > Bottom </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
           to="/products"
-          onClick={props.handleClick}
+          onClick={() => props.handleClick("Accessory")}
         > Accessory </NavLink>
 
         <NavLink 
