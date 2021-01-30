@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getProduct } from '../actions/productActions'
 
 class ProductShow extends Component {
-    //console.log(match, match.params.productId)
+    
     componentDidMount() {
         this.props.getProduct(this.props.match.params.productId)
     }
@@ -18,7 +18,6 @@ class ProductShow extends Component {
 
                 { this.props.loading ? "Loading" : 
                 <div>
-                    {console.log(this.props.product)}
                     <img src={p.image} alt="Not Found" width="400" height="400" className="product-show"/> 
                     <br/> <br/>
                     ${p.price} - {p.name} <br/>

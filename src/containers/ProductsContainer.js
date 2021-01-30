@@ -50,10 +50,10 @@ class ProductsContainer extends Component {
                 <div className="filter-container">
                 </div>
                 <div className="all-product"> 
-                     <Route exact path={this.props.match.url} render={() => 
+                    <Route exact path={this.props.match.url} render={() => 
                         <div> { this.props.loading ? "Loading..." : allProducts } </div>}/>
                     <Route path={`${this.props.match.url}/:productId`} render={routerProps => 
-                        <ProductShow {...routerProps} products={this.props.products} /> }/>
+                        <ProductShow {...routerProps} /> }/>
                 </div> 
                 <div className="page-bar"> 
                     { showPageBar ? < PageBar pages={pageCount} changePage={this.editSlice}/> : null }
