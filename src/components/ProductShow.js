@@ -2,19 +2,23 @@ import '../cssFolder/ProductComponent.css';
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { } from '../actions/productActions'
+import { getProduct } from '../actions/productActions'
 
 class ProductShow extends Component {
     //console.log(match, match.params.productId)
+    componentDidMount() {
+        this.props.getProduct(this.props.match.params.productId)
+    }
     
     render() {
-        console.log(this.props.match.params.productId)
-        let p = this.props.products[this.props.match.params.productId]
-        console.log(p)
+        let p = this.props.product
+
         return (
             <div className="product-details">
-                { this.props.loading ? null : 
+
+                { this.props.loading ? "Loading" : 
                 <div>
+                    {console.log(this.props.product)}
                     <img src={p.image} alt="Not Found" width="400" height="400" className="product-show"/> 
                     <br/> <br/>
                     ${p.price} - {p.name} <br/>
@@ -39,11 +43,9 @@ class ProductShow extends Component {
 const mapStateToProps = state => {
     let s = state.productReducer
     return {
-        products: s.products,
-        loading: s.loading,
-        sliceStart: s.sliceStart,
-        sliceEnd: s.sliceEnd
+        product: s.currentProduct,
+        loading: s.loading
     }
 }
  
-export default connect(mapStateToProps)(ProductShow);
+export default connect(mapStateToProps, { getProduct } )(ProductShow);

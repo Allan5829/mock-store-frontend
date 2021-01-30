@@ -1,4 +1,4 @@
-export default (state = {products: [], loading: false, sliceStart: 0, sliceEnd: 8}, action) => {
+export default (state = {products: [], loading: false, sliceStart: 0, sliceEnd: 8, currentProduct: []}, action) => {
     switch(action.type) {
 
         case('LOADING_DID_MOUNT'):
@@ -25,6 +25,9 @@ export default (state = {products: [], loading: false, sliceStart: 0, sliceEnd: 
                     return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
                         products: action.payload}
             } 
+        
+        case ('FINDING_PRODUCT'):
+            return {...state, loading: false, currentProduct: action.payload}
         
         case ('ADDING_PRODUCT'):
             return { ...state, loading: true }

@@ -45,3 +45,12 @@ export const deleteProduct = (id) => {
         .then(() => dispatch({ type: "PRODUCT_DELETED", payload: id }))
     }
   }
+
+export const getProduct = (id) => {
+    return (dispatch) => {
+      dispatch({ type: 'LOADING_DID_MOUNT'})
+      fetch(URL + '/products/' + id)
+      .then(response => response.json())
+      .then(p => dispatch({ type: 'FINDING_PRODUCT', payload: p }))
+    }
+  }
