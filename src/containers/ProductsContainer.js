@@ -5,28 +5,46 @@ import { getAllProducts, updateCurrentPage } from '../actions/productActions'
 import ProductComponent from '../components/ProductComponent'
 
 import { Route } from 'react-router-dom';
-import ProductShow from '../components/ProductShow'
+//import ProductShow from '../components/ProductShow'
 import PageBar from '../components/PageBar'
 
 class ProductsContainer extends Component {
 
     componentDidMount() {
-        this.props.getAllProducts(this.props.filterTerm)
-        showPageBar = true
+        this.props.getAllProducts(this.returnFilterTerm())
+        showProductsPage = true
     }
 
     shouldComponentUpdate(nextProps) {
-        // Triggers when user is (for example) viewing Men's products and clicks to view Women's products
-        if (this.props.filterTerm !== nextProps.filterTerm) {
-            this.props.getAllProducts(nextProps.filterTerm)
-        }
+        // The following code was used to resolve a bug that occurs when including a Route with 
+        //  path="/products", changing path to anything else besides "/products/:id" resolves issue.
 
-        // Hides PageBar component so it doesn't appear in the ProductShow component
-        if (this.props.location.pathname !== nextProps.location.pathname) {
-            nextProps.location.pathname === "/products" ? showPageBar = true : showPageBar = false
+        // Hides components that shouldn't be visible due to a bug that causes this component to be 
+        //  rendered when it shouldn't.
+
+        if (this.props.products.length !== nextProps.products.length) {
+            // Will be commented out to save code for potential future use as well as showProductPage
+            //nextProps.match.path === "/products" ? showProductsPage = false : showProductsPage = true
         }
 
         return true
+    }
+
+    returnFilterTerm = () => {
+        switch(this.props.location.pathname) {
+            case("/products_men"):
+              return "Men"
+            case("/products_women"):
+              return "Women"
+            case("/products_top"):
+              return "Top"
+            case("/products_bottom"):
+              return "Bottom"
+            case("/products_accessory"):
+              return "Accessory"
+            default:
+              return "None"
+          }
     }
 
     editSlice = page => {
@@ -46,27 +64,28 @@ class ProductsContainer extends Component {
         })
 
         return (
-            <div className="products-page">
-                <div className="filter-container">
+            <div className="products-container">
+                { showProductsPage ? 
+                <div className="products-page">
+                    <div className="filter-container">
+                    </div>
+                    <div className="all-product"> 
+                        { this.props.loading ? "Loading..." : allProducts }
+                    </div> 
+                    <div className="page-bar"> 
+                        < PageBar pages={pageCount} changePage={this.editSlice}/> 
+                    </div>
                 </div>
-                <div className="all-product"> 
-                    <Route exact path={this.props.match.url} render={() => 
-                        <div> { this.props.loading ? "Loading..." : allProducts } </div>}/>
-                    <Route path={`${this.props.match.url}/:productId`} render={routerProps => 
-                        <ProductShow {...routerProps} /> }/>
-                </div> 
-                <div className="page-bar"> 
-                    { showPageBar ? < PageBar pages={pageCount} changePage={this.editSlice}/> : null }
-                </div>
+                : null }
             </div>
         )
     }
 } 
 
-// showPagebar used to determine whether or not PageBar appears
+// showProductsPage used to determine whether or not PageBar appears
 // Uses variable instead of local state because state would have to be updated in shouldComponentUpdate
 // Would be more work to keep track in Store's state
-let showPageBar 
+let showProductsPage 
 
 // size used to determine how many buttons PageBar contains and for quicker access to data
 let size

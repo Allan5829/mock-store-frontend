@@ -12,10 +12,9 @@ class ProductShow extends Component {
     
     render() {
         let p = this.props.product
-
+        
         return (
             <div className="product-details">
-
                 { this.props.loading ? "Loading" : 
                 <div>
                     <img src={p.image} alt="Not Found" width="400" height="400" className="product-show"/> 
@@ -30,6 +29,8 @@ class ProductShow extends Component {
                         <li> {p.sub_category} </li>
                         <li> {p.gender} </li>
                     </ul>
+                    <br/>
+                    <button onClick={() => this.props.history.goBack()}> Back </button>
                 </div>
                 }
                 

@@ -14,32 +14,27 @@ const NavBar = (props) => {
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products"
-          onClick={() => props.handleClick("Men")}
+          to="/products_men"
         > Men </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products"
-          onClick={() => props.handleClick("Women")}
+          to="/products_women"
         > Women </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products"
-          onClick={() => props.handleClick("Top")}
+          to="/products_top"
         > Top </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products"
-          onClick={() => props.handleClick("Bottom")}
+          to="/products_bottom"
         > Bottom </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products"
-          onClick={() => props.handleClick("Accessory")}
+          to="/products_accessory"
         > Accessory </NavLink>
 
         <NavLink 

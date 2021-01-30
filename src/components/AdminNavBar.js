@@ -14,7 +14,7 @@ const NavBar = (props) => {
 
         <NavLink 
           className="nav-link-margin"  
-          to="/products"
+          to="/products_all"
         > Products </NavLink>
 
         <NavLink 

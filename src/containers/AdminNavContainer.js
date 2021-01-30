@@ -7,6 +7,7 @@ import ProductsContainer from './ProductsContainer'
 import AdminHome from '../components/AdminHomeComponent'
 import ProductNew from '../components/ProductNew'
 import AdminProductsContainer from './AdminProductsContainer'
+import ProductShow from '../components/ProductShow'
  
 class AdminNavContainer extends Component {
   render() {
@@ -15,9 +16,10 @@ class AdminNavContainer extends Component {
         <div>
           <AdminNavBar switchAdmin={this.props.switchAdmin} />
           <Route exact path="/admin" render={() => <AdminHome/>} />
-          <Route path='/products' render={routerProps => <ProductsContainer {...routerProps} filterTerm={"none"} />} />
+          <Route path='/products_all' render={routerProps => <ProductsContainer {...routerProps} />} />
           <Route path='/admin/products_new' render={routerProps => <ProductNew {...routerProps}/>} />
           <Route path='/admin/products_delete' render={routerProps => <AdminProductsContainer {...routerProps}/>} />
+          <Route path={`/products/:productId`} render={routerProps => <ProductShow {...routerProps} /> }/>
         </div>
       </Router>
     );

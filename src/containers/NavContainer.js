@@ -9,18 +9,9 @@ import Home from '../components/HomeComponent'
 import AdminHome from '../components/AdminHomeComponent'
 import ProductNew from '../components/ProductNew'
 import AdminProductsContainer from './AdminProductsContainer'
+import ProductShow from '../components/ProductShow'
 
 class NavContainer extends Component {
-
-  state ={
-    filterTerm: "none"
-  }
-
-  handleClick = filter => {
-    this.setState({
-      filterTerm: filter
-    })
-  }
 
   componentDidMount() {
     this.checkForPathname(history.location.pathname)
@@ -36,10 +27,16 @@ class NavContainer extends Component {
     switch(pathname) {
       case("/admin"):
         this.props.switchAdmin()
+        break;
+      case("/products_all"):
+        this.props.switchAdmin()
+        break;
       case("/admin/products_new"):
         this.props.switchAdmin()
+        break;
       case("/admin/products_delete"):
         this.props.switchAdmin()
+        break;
       default:
         return null
     }
@@ -51,10 +48,16 @@ class NavContainer extends Component {
         <div>
           <NavBar handleClick={this.handleClick} switchAdmin={this.props.switchAdmin}/>
           <Route exact path="/" render={() => <Home/>} />
-          <Route path='/products' render={routerProps => <ProductsContainer {...routerProps} filterTerm={this.state.filterTerm}/>} />
+          <Route path='/products_men' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products_women' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products_top' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products_bottom' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products_accessory' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path={`/products/:productId`} render={routerProps => <ProductShow {...routerProps} test={history.location.pathname}/> }/>
 
           {/* Admin Routes */}
           <Route exact path="/admin" render={() => <AdminHome/>} />
+          <Route path='/products_all' render={routerProps => <ProductsContainer {...routerProps} />} />
           <Route path='/admin/products_new' render={routerProps => <ProductNew {...routerProps}/>} />
           <Route path='/admin/products_delete' render={routerProps => <AdminProductsContainer {...routerProps}/>} />
         </div>
