@@ -48,6 +48,12 @@ const NavBar = (props) => {
           onClick={props.switchAdmin}
         > Admin Mode </NavLink>
 
+        <NavLink 
+          className="nav-link-margin" 
+          to="/products_men"
+          onClick={() => props.handleClick("Men")}
+        > Test </NavLink>
+
       </div>
     </div>
   );

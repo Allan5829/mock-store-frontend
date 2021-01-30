@@ -6,6 +6,8 @@ import history from '../history';
 import ProductsContainer from './ProductsContainer'
 import Home from '../components/HomeComponent'
 
+import TempContainer from './TempContainer'
+
 class NavContainer extends Component {
 
   state ={
@@ -25,6 +27,8 @@ class NavContainer extends Component {
           <NavBar handleClick={this.handleClick} switchAdmin={this.props.switchAdmin}/>
           <Route exact path="/" render={() => <Home/>} />
           <Route path='/products' render={routerProps => <ProductsContainer {...routerProps} filterTerm={this.state.filterTerm}/>} />
+          {/* test path */}
+          <Route path='/products_men' render={routerProps => <TempContainer {...routerProps} filterTerm={this.state.filterTerm}/>} />
         </div>
       </Router>
     );
