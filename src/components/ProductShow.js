@@ -14,9 +14,9 @@ class ProductShow extends Component {
         let p = this.props.product
         
         return (
-            <div className="product-details">
+            <div className="center-product">
                 { this.props.loading ? "Loading" : 
-                <div>
+                <div className="product-details">
                     <img src={p.image} alt="Not Found" width="400" height="400" className="product-show"/> 
                     <br/> <br/>
                     ${p.price} - {p.name} <br/>

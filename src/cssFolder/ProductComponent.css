@@ -43,3 +43,7 @@
     background-color: aquamarine; 
     padding: 5px 5px;
 }
+.center-product{
+    display: flex;
+  justify-content: center;
+}
