@@ -3,9 +3,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAllProducts, updateCurrentPage } from '../actions/productActions'
 import ProductComponent from '../components/ProductComponent'
-
-import { Route } from 'react-router-dom';
 import PageBar from '../components/PageBar'
+import FilterContainer from './FilterContainer'
 
 class ProductsContainer extends Component {
 
@@ -48,9 +47,9 @@ class ProductsContainer extends Component {
 
         return (
             <div className="products-container">
-                { showProductsPage ? 
                 <div className="products-page">
                     <div className="filter-container">
+                        <FilterContainer />
                     </div>
                     <div className="all-product"> 
                         { this.props.loading ? "Loading..." : allProducts }
@@ -59,7 +58,6 @@ class ProductsContainer extends Component {
                         < PageBar pages={pageCount} changePage={this.editSlice}/> 
                     </div>
                 </div>
-                : null }
             </div>
         )
     }

@@ -1,0 +1,10 @@
+.filter-container {
+    height: 80%;
+    width: 15%;
+    position: absolute;
+    z-index: 1;
+    top: 19%;
+    left: 1%;
+    background-color: rgb(202, 202, 202);
+
+  }
