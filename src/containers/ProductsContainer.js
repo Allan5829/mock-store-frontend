@@ -6,6 +6,7 @@ import ProductComponent from '../components/ProductComponent'
 import PageBar from '../components/PageBar'
 import FilterContainer from './FilterContainer'
 
+// edit css https://www.w3schools.com/css/tryit.asp?filename=trycss_template2_grid
 class ProductsContainer extends Component {
 
     componentDidMount() {
