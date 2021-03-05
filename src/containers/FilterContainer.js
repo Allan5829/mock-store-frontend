@@ -5,6 +5,15 @@ import { filter } from 'minimatch';
  
 class FilterContainer extends Component {
 
+  state = {
+    genderShow: false,
+    maincShow: false,
+    subcShow: false,
+    colorShow: false,
+    sizeShow: false,
+    sortbyShow: false
+  }
+
   filterClicked = () => {
     alert("clicked")
   }
@@ -23,9 +32,67 @@ class FilterContainer extends Component {
     return (
       <div className="filter-container">
         {/* render sort dropdown */}
-        {filterTermsColor.map( x => {
-          return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
-        })}
+
+        <div class="sort-dropdown">
+          <button className="sort-dropdown">Sort By</button>
+          <div id="myDropdown" class="dropdown-content">
+            { this.state.sortbyShow ?
+            sortBy.map( x => {
+              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+            }) : null}
+          </div>
+        </div>
+
+        <div class="gender-dropdown">
+          <button className="gender-dropdown">Gender</button>
+          <div id="myDropdown" class="dropdown-content">
+            { this.state.genderShow ?
+            filterTermsGender.map( x => {
+              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+            }) : null}
+          </div>
+        </div>
+
+        <div class="mainc-dropdown">
+          <button className="mainc-dropdown">Main Category</button>
+          <div id="myDropdown" class="dropdown-content">
+            { this.state.maincShow ?
+            filterTermsMainCategory.map( x => {
+              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+            }) : null}
+          </div>
+        </div>
+
+        <div className="subc-dropdown">
+          <button className="subc-dropdown">Sub Category</button>
+          <div id="myDropdown" className="dropdown-content">
+            { this.state.subcShow ?
+            filterTermsSubCategory.map( x => {
+              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+            }) : null}
+          </div>
+        </div>
+
+        <div className="color-dropdown">
+          <button className="color-dropdown">Color</button>
+          <div id="myDropdown" className="dropdown-content">
+            { this.state.colorShow ?
+            filterTermsColor.map( x => {
+              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+            }) : null}
+          </div>
+        </div>
+
+        <div className="size-dropdown">
+          <button className="size-dropdown">Size</button>
+          <div id="myDropdown" className="dropdown-content">
+            { this.state.sizeShow ?
+            filterTermsSize.map( x => {
+              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+            }) : null}
+          </div>
+        </div>
+        
       </div>
     );
   }
