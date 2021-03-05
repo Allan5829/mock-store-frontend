@@ -1,7 +1,7 @@
 import '../cssFolder/FilterContainer.css';
 import React, { Component } from 'react';
 import FilterCheckboxComponent from '../components/FilterCheckboxComponent'
-import { filter } from 'minimatch';
+//import { filter } from 'minimatch';
  
 class FilterContainer extends Component {
 
@@ -11,11 +11,46 @@ class FilterContainer extends Component {
     subcShow: false,
     colorShow: false,
     sizeShow: false,
-    sortbyShow: false
+    sortbyShow: false,
+    filters: []
   }
 
-  filterClicked = () => {
-    alert("clicked")
+  filterClicked = name => {
+    //alert("clicked")
+    //console.log(name)
+
+    if (this.state.filters.includes(name)) {
+      this.setState(state => {
+        const filters = state.filters.filter(x => x !== name)
+
+        return {filters}
+      })
+    } else if (sortBy.includes(name)) {
+      let insert, remove
+
+      sortBy.forEach(x => {
+        if (x === name) {
+          insert = name
+        } else if (this.state.filters.includes(x)) {
+          remove = x
+        } else {}
+      })
+
+      let inserted = [...this.state.filters, insert]
+      this.setState(state => {
+        const filters = inserted.filter(x => x !== remove);
+   
+        return {filters}
+      });
+
+    } else {
+      this.setState(state => {
+      const filters = [...state.filters, name];
+ 
+      return {filters}
+      });
+    }
+    
   }
 
   handleStateSwitch = event => {
@@ -44,41 +79,42 @@ class FilterContainer extends Component {
     let filterTermsColor = ["Black", "White", "Neutral", "Gray", "Red", "Blue", "Green", "Yellow", 
       "Multiple"]
     let filterTermsSize = ["Small", "Medium", "Large"]
-    let sortBy = ["price", "newest (Default)", "oldest"]
 
     let page = this.props.returnPageName();
 
     return (
       <div className="filter-container">
 
-        <div class="sort-dropdown">
+        <button> Update Search </button>
+
+        <div className="sort-dropdown">
           <button className="sort-dropdown" id="sortbyShow"  value={this.state.sortbyShow} onClick={this.handleStateSwitch} >Sort By</button>
 
           { this.state.sortbyShow ?
             sortBy.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
           }) : null}
         </div>
 
-        <div class="gender-dropdown">
+        <div className="gender-dropdown">
           { !filterTermsGender.includes(page) ? 
             <button className="gender-dropdown" id="genderShow"  value={this.state.genderShow} onClick={this.handleStateSwitch}
             >Gender</button>  : null}
            
           { this.state.genderShow ?
             filterTermsGender.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
           }) : null}
         </div>
 
-        <div class="mainc-dropdown">
+        <div className="mainc-dropdown">
         { !filterTermsMainCategory.includes(page) ? 
             <button className="mainc-dropdown" id="maincShow"  value={this.state.maincShow} onClick={this.handleStateSwitch}
             >Main Category</button>  : null}
           
             { this.state.maincShow ?
             filterTermsMainCategory.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
             }) : null}
         </div>
 
@@ -87,7 +123,7 @@ class FilterContainer extends Component {
 
           { this.state.subcShow ?
             filterTermsSubCategory.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
           }) : null}
         </div>
 
@@ -96,7 +132,7 @@ class FilterContainer extends Component {
 
           { this.state.colorShow ?
             filterTermsColor.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
           }) : null}
         </div>
 
@@ -105,7 +141,7 @@ class FilterContainer extends Component {
 
           { this.state.sizeShow ?
             filterTermsSize.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
           }) : null}
         </div>
         
@@ -113,5 +149,7 @@ class FilterContainer extends Component {
     );
   }
 }
+
+let sortBy = ["price", "newest (Default)", "oldest"]
 
 export default FilterContainer;
