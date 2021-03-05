@@ -54,3 +54,9 @@ export const getProduct = (id) => {
       .then(p => dispatch({ type: 'FINDING_PRODUCT', payload: p }))
     }
   }
+
+export const sortProducts = (sortby) => {
+  return (dispatch) => {
+    dispatch({ type: 'SORT_PRODUCTS', payload: sortby})
+  }
+}

@@ -1,6 +1,8 @@
 import '../cssFolder/FilterContainer.css';
 import React, { Component } from 'react';
 import FilterCheckboxComponent from '../components/FilterCheckboxComponent'
+import { connect } from 'react-redux'
+import { sortProducts } from '../actions/productActions'
 //import { filter } from 'minimatch';
  
 class FilterContainer extends Component {
@@ -12,7 +14,8 @@ class FilterContainer extends Component {
     colorShow: false,
     sizeShow: false,
     sortbyShow: false,
-    filters: []
+    filters: [],
+    sorting: ""
   }
 
   filterClicked = name => {
@@ -26,23 +29,9 @@ class FilterContainer extends Component {
         return {filters}
       })
     } else if (sortBy.includes(name)) {
-      let insert, remove
-
-      sortBy.forEach(x => {
-        if (x === name) {
-          insert = name
-        } else if (this.state.filters.includes(x)) {
-          remove = x
-        } else {}
+      this.setState({
+        sorting: name
       })
-
-      let inserted = [...this.state.filters, insert]
-      this.setState(state => {
-        const filters = inserted.filter(x => x !== remove);
-   
-        return {filters}
-      });
-
     } else {
       this.setState(state => {
       const filters = [...state.filters, name];
@@ -69,6 +58,12 @@ class FilterContainer extends Component {
       [button]: stateSwitch
     })
   }
+
+  handleSortProducts = () => {
+    if (this.state.sorting.length > 0) {
+      this.props.sortProducts(this.state.sorting)
+    }
+  }
     
   render() {
 
@@ -85,14 +80,16 @@ class FilterContainer extends Component {
     return (
       <div className="filter-container">
 
-        <button> Update Search </button>
+        <button onClick={this.handleSortProducts}> Sort By </button>
+        <button> Filter </button>
 
         <div className="sort-dropdown">
-          <button className="sort-dropdown" id="sortbyShow"  value={this.state.sortbyShow} onClick={this.handleStateSwitch} >Sort By</button>
+          <button className="sort-dropdown" id="sortbyShow"  value={this.state.sortbyShow} onClick={this.handleStateSwitch} 
+          >Sort Products</button>
 
           { this.state.sortbyShow ?
             sortBy.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.filters} checked={this.filterClicked}/>
+              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.sorting} checked={this.filterClicked}/>
           }) : null}
         </div>
 
@@ -150,6 +147,6 @@ class FilterContainer extends Component {
   }
 }
 
-let sortBy = ["price", "newest (Default)", "oldest"]
+let sortBy = ["Price $-$$$", "Price $$$-$", "Newest", "Oldest"]
 
-export default FilterContainer;
+export default connect( null, { sortProducts } )(FilterContainer);
