@@ -17,6 +17,23 @@ class FilterContainer extends Component {
   filterClicked = () => {
     alert("clicked")
   }
+
+  handleStateSwitch = event => {
+    //console.log(event.target.value)
+    let button = event.target.id
+    let stateSwitch
+    this.state[button] === true ? stateSwitch = false : stateSwitch = true
+    //console.log(stateSwitch)
+    this.setState({
+      genderShow: false,
+      maincShow: false,
+      subcShow: false,
+      colorShow: false,
+      sizeShow: false,
+      sortbyShow: false,
+      [button]: stateSwitch
+    })
+  }
     
   render() {
 
@@ -33,72 +50,63 @@ class FilterContainer extends Component {
 
     return (
       <div className="filter-container">
-        {/* render sort dropdown */}
 
         <div class="sort-dropdown">
-          
-          <button className="sort-dropdown">Sort By</button>
-          <div id="myDropdown" class="dropdown-content">
-            { this.state.sortbyShow ?
+          <button className="sort-dropdown" id="sortbyShow"  value={this.state.sortbyShow} onClick={this.handleStateSwitch} >Sort By</button>
+
+          { this.state.sortbyShow ?
             sortBy.map( x => {
               return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
-            }) : null}
-          </div>
+          }) : null}
         </div>
 
         <div class="gender-dropdown">
-          
           { !filterTermsGender.includes(page) ? 
-            <button className="gender-dropdown">Gender</button>  : null}
+            <button className="gender-dropdown" id="genderShow"  value={this.state.genderShow} onClick={this.handleStateSwitch}
+            >Gender</button>  : null}
            
-          <div id="myDropdown" class="dropdown-content">
-            { this.state.genderShow ?
+          { this.state.genderShow ?
             filterTermsGender.map( x => {
               return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
-            }) : null}
-          </div>
+          }) : null}
         </div>
 
         <div class="mainc-dropdown">
         { !filterTermsMainCategory.includes(page) ? 
-            <button className="mainc-dropdown">Main Category</button>  : null}
+            <button className="mainc-dropdown" id="maincShow"  value={this.state.maincShow} onClick={this.handleStateSwitch}
+            >Main Category</button>  : null}
           
-          <div id="myDropdown" class="dropdown-content">
             { this.state.maincShow ?
             filterTermsMainCategory.map( x => {
               return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
             }) : null}
-          </div>
         </div>
 
         <div className="subc-dropdown">
-          <button className="subc-dropdown">Sub Category</button>
-          <div id="myDropdown" className="dropdown-content">
-            { this.state.subcShow ?
+          <button className="subc-dropdown" id="subcShow"  value={this.state.subcShow} onClick={this.handleStateSwitch}>Sub Category</button>
+
+          { this.state.subcShow ?
             filterTermsSubCategory.map( x => {
               return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
-            }) : null}
-          </div>
+          }) : null}
         </div>
 
         <div className="color-dropdown">
-          <button className="color-dropdown">Color</button>
-          <div id="myDropdown" className="dropdown-content">
-            { this.state.colorShow ?
+          <button className="color-dropdown" id="colorShow"  value={this.state.colorShow} onClick={this.handleStateSwitch}>Color</button>
+
+          { this.state.colorShow ?
             filterTermsColor.map( x => {
               return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
-            }) : null}
-          </div>
+          }) : null}
         </div>
 
         <div className="size-dropdown">
-          <button className="size-dropdown">Size</button>
-          <div id="myDropdown" className="dropdown-content">
-            { this.state.sizeShow ?
+          <button className="size-dropdown" id="sizeShow"  value={this.state.sizeShow} onClick={this.handleStateSwitch}>Size</button>
+
+          { this.state.sizeShow ?
             filterTermsSize.map( x => {
               return < FilterCheckboxComponent key={x} name={x} checked={this.filterClicked}/>
-            }) : null}
-          </div>
+          }) : null}
         </div>
         
       </div>
