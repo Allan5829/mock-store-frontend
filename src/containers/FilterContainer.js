@@ -29,11 +29,14 @@ class FilterContainer extends Component {
     let filterTermsSize = ["Small", "Medium", "Large"]
     let sortBy = ["price", "newest (Default)", "oldest"]
 
+    let page = this.props.returnPageName();
+
     return (
       <div className="filter-container">
         {/* render sort dropdown */}
 
         <div class="sort-dropdown">
+          
           <button className="sort-dropdown">Sort By</button>
           <div id="myDropdown" class="dropdown-content">
             { this.state.sortbyShow ?
@@ -44,7 +47,10 @@ class FilterContainer extends Component {
         </div>
 
         <div class="gender-dropdown">
-          <button className="gender-dropdown">Gender</button>
+          
+          { !filterTermsGender.includes(page) ? 
+            <button className="gender-dropdown">Gender</button>  : null}
+           
           <div id="myDropdown" class="dropdown-content">
             { this.state.genderShow ?
             filterTermsGender.map( x => {
@@ -54,7 +60,9 @@ class FilterContainer extends Component {
         </div>
 
         <div class="mainc-dropdown">
-          <button className="mainc-dropdown">Main Category</button>
+        { !filterTermsMainCategory.includes(page) ? 
+            <button className="mainc-dropdown">Main Category</button>  : null}
+          
           <div id="myDropdown" class="dropdown-content">
             { this.state.maincShow ?
             filterTermsMainCategory.map( x => {

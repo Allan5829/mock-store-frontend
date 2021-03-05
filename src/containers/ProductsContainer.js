@@ -50,7 +50,7 @@ class ProductsContainer extends Component {
             <div className="products-container">
                 <div className="products-page">
                     <div className="filter-container">
-                        <FilterContainer />
+                        <FilterContainer returnPageName={this.returnFilterTerm}/>
                     </div>
                     <div className="all-product"> 
                         { this.props.loading ? "Loading..." : allProducts }
