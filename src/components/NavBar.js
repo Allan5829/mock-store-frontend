@@ -14,27 +14,27 @@ const NavBar = (props) => {
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products/men"
+          to="/products/men?page=1"
         > Men </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products/women"
+          to="/products/women?page=1"
         > Women </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products/top"
+          to="/products/top?page=1"
         > Top </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products/bottom"
+          to="/products/bottom?page=1"
         > Bottom </NavLink>
 
         <NavLink 
           className="nav-link-margin" 
-          to="/products/accessory"
+          to="/products/accessory?page=1"
         > Accessory </NavLink>
 
         <NavLink 

@@ -10,25 +10,28 @@ import FilterContainer from './FilterContainer'
 class ProductsContainer extends Component {
 
     componentDidMount() {
-        this.props.getAllProducts(this.returnFilterTerm(this.props.location.pathname))
+        this.props.getAllProducts(this.parseUrl()[0])
     }
 
     shouldComponentUpdate(nextProps) {
-        if (nextProps.location.pathname !== this.props.location.pathname) {
-            this.props.getAllProducts(this.returnFilterTerm(nextProps.location.pathname))
+        let next = this.parseUrl(nextProps.location.pathname)[0]
+        let current = this.parseUrl()[0]
+        if ( next !== current ) {
+            this.props.getAllProducts(next)
+            //console.log("test")
         }
         return true
     }
 
-    returnFilterTerm = (location) => {
-        let temp = this.parseUrl(location)
-        return temp[0]
-    }
-
-    parseUrl = url => {
-        let parsed = url.split('/')
-        let page = parsed[3].includes("page") ? parsed[3] : "none"
-        let result = [parsed[2], page]
+    parseUrl = (url = this.props.location.pathname) => {
+        let result = []
+        //works for "/products/men?page=2"
+        if ( url.includes('?') ) {
+            result = url.split('/')[2].split('?')
+            result[1] = result[1].split('=')[1]
+        } else {
+            result = [url.split('/')[2], "1"]
+        }
         return result
     }
 
@@ -37,6 +40,8 @@ class ProductsContainer extends Component {
         if (page * 8 === this.props.sliceEnd) {
             // Nothing happens from clicking to view a page the user is already on
         } else {
+            //console.log(`${this.props.location.pathname}/?page=${page}`);
+            this.props.history.push({ pathname: `/products/${this.parseUrl()[0]}?page=${page}`})
             this.props.updateCurrentPage(page)
         }
     }
@@ -53,7 +58,7 @@ class ProductsContainer extends Component {
             <div className="products-container">
                 <div className="products-page">
                     <div className="filter-container">
-                        <FilterContainer returnPageName={this.returnFilterTerm}/>
+                        <FilterContainer returnPageName={this.parseUrl}/>
                     </div>
                     <div className="all-product"> 
                         { this.props.loading ? "Loading..." : allProducts }

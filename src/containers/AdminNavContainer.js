@@ -17,10 +17,10 @@ class AdminNavContainer extends Component {
           <AdminNavBar switchAdmin={this.props.switchAdmin} />
           <Switch>
           <Route exact path="/admin" render={() => <AdminHome/>} />
-          <Route path='/products/all' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/:params' render={routerProps => <ProductsContainer {...routerProps} />} />
           <Route path='/admin/products/new' render={routerProps => <ProductNew {...routerProps}/>} />
           <Route path='/admin/products/delete' render={routerProps => <AdminProductsContainer {...routerProps}/>} />
-          <Route path={`/products/:productId`} render={routerProps => <ProductShow {...routerProps} /> }/>
+          <Route path={`/product/:productId`} render={routerProps => <ProductShow {...routerProps} /> }/>
           </Switch>
         </div>
       </Router>

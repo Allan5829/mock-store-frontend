@@ -67,15 +67,15 @@ class FilterContainer extends Component {
     
   render() {
 
-    let filterTermsGender = [ "Men", "Women" ]
-    let filterTermsMainCategory =  ["Top", "Bottom", "Accessory"]
+    let filterTermsGender = [ "men", "women" ]
+    let filterTermsMainCategory =  ["top", "bottom", "accessory"]
   
     let filterTermsSubCategory = ["Jacket", "Sweater", "Shirt", "Jeans", "Pants", "Shorts", "Socks", "Hat", "Belt"]
     let filterTermsColor = ["Black", "White", "Neutral", "Gray", "Red", "Blue", "Green", "Yellow", 
       "Multiple"]
     let filterTermsSize = ["Small", "Medium", "Large"]
 
-    let page = this.props.returnPageName();
+    let page = this.props.returnPageName()[0];
 
     return (
       <div className="filter-container">

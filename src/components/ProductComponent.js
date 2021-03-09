@@ -8,7 +8,7 @@ const ProductComponent = props => {
         <div className='square-box'> 
             <div className='square-content'>
                 <div><span> 
-                    <Link key={p.id} to={`/products/${p.id}`}>
+                    <Link key={p.id} to={`/product/${p.id}`}>
                         <img src={p.image} alt="Not Found" width="200" height="200"/>
                     </Link>
                     <br/>

@@ -49,19 +49,14 @@ class NavContainer extends Component {
           <NavBar handleClick={this.handleClick} switchAdmin={this.props.switchAdmin}/>
           <Switch>
           <Route exact path="/" render={() => <Home/>} />
-          <Route path='/products/all' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products/men' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products/women' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products/top' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products/bottom' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products/accessory' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/:params' render={routerProps => <ProductsContainer {...routerProps} />} />
 
           {/* Admin Routes */}
           <Route exact path="/admin" render={() => <AdminHome/>} />
           <Route path='/admin/products/new' render={routerProps => <ProductNew {...routerProps}/>} />
           <Route path='/admin/products/delete' render={routerProps => <AdminProductsContainer {...routerProps}/>} />
 
-          <Route path={`/products/:productId`} render={routerProps => <ProductShow {...routerProps} /> }/>
+          <Route path={`/product/:productId`} render={routerProps => <ProductShow {...routerProps} /> }/>
 
           
           </Switch>
