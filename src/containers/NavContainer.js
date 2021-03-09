@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import history from '../history';
 
@@ -15,7 +15,7 @@ class NavContainer extends Component {
 
   componentDidMount() {
     this.checkForPathname(history.location.pathname)
-}
+  }
 
   checkForPathname = pathname => {
     // By default NavBar renders even when viewing a component in "admin mode".
@@ -28,13 +28,13 @@ class NavContainer extends Component {
       case("/admin"):
         this.props.switchAdmin()
         break;
-      case("/products_all"):
+      case("/products/all"):
         this.props.switchAdmin()
         break;
-      case("/admin/products_new"):
+      case("/admin/products/new"):
         this.props.switchAdmin()
         break;
-      case("/admin/products_delete"):
+      case("/admin/products/delete"):
         this.props.switchAdmin()
         break;
       default:
@@ -47,19 +47,24 @@ class NavContainer extends Component {
       <Router history={history}>
         <div>
           <NavBar handleClick={this.handleClick} switchAdmin={this.props.switchAdmin}/>
+          <Switch>
           <Route exact path="/" render={() => <Home/>} />
-          <Route path='/products_men' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products_women' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products_top' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products_bottom' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/products_accessory' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path={`/products/:productId`} render={routerProps => <ProductShow {...routerProps} test={history.location.pathname}/> }/>
+          <Route path='/products/all' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/men' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/women' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/top' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/bottom' render={routerProps => <ProductsContainer {...routerProps} />} />
+          <Route path='/products/accessory' render={routerProps => <ProductsContainer {...routerProps} />} />
 
           {/* Admin Routes */}
           <Route exact path="/admin" render={() => <AdminHome/>} />
-          <Route path='/products_all' render={routerProps => <ProductsContainer {...routerProps} />} />
-          <Route path='/admin/products_new' render={routerProps => <ProductNew {...routerProps}/>} />
-          <Route path='/admin/products_delete' render={routerProps => <AdminProductsContainer {...routerProps}/>} />
+          <Route path='/admin/products/new' render={routerProps => <ProductNew {...routerProps}/>} />
+          <Route path='/admin/products/delete' render={routerProps => <AdminProductsContainer {...routerProps}/>} />
+
+          <Route path={`/products/:productId`} render={routerProps => <ProductShow {...routerProps} /> }/>
+
+          
+          </Switch>
         </div>
       </Router>
     );

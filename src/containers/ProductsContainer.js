@@ -10,25 +10,28 @@ import FilterContainer from './FilterContainer'
 class ProductsContainer extends Component {
 
     componentDidMount() {
-        this.props.getAllProducts(this.returnFilterTerm())
+        this.props.getAllProducts(this.returnFilterTerm(this.props.location.pathname))
     }
 
-    returnFilterTerm = () => {
-        switch(this.props.location.pathname) {
-            case("/products_men"):
-              return "Men"
-            case("/products_women"):
-              return "Women"
-            case("/products_top"):
-              return "Top"
-            case("/products_bottom"):
-              return "Bottom"
-            case("/products_accessory"):
-              return "Accessory"
-            default:
-              return "None"
-          }
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            this.props.getAllProducts(this.returnFilterTerm(nextProps.location.pathname))
+        }
+        return true
     }
+
+    returnFilterTerm = (location) => {
+        let temp = this.parseUrl(location)
+        return temp[0]
+    }
+
+    parseUrl = url => {
+        let parsed = url.split('/')
+        let page = parsed[3].includes("page") ? parsed[3] : "none"
+        let result = [parsed[2], page]
+        return result
+    }
+
 
     editSlice = page => {
         if (page * 8 === this.props.sliceEnd) {
