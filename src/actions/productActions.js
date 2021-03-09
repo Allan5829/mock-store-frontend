@@ -1,12 +1,19 @@
 // maybe use https://fakestoreapi.com/
 const URL = "http://localhost:3001" //using proxy causes error in addNewProduct
 
-export const getAllProducts = (filterTerm) => {
+export const getAllProducts = (params) => {
+    let filterTerm = params[0]
+    let pageStart = 0
+    let pageEnd = 8
+    if (params[1] > 1) {
+      pageStart = (params[1] - 1) * 8
+      pageEnd = params[1] * 8
+    }
     return (dispatch) => {
       dispatch({ type: 'LOADING_DID_MOUNT'})
       fetch(URL + '/products')
       .then(response => response.json())
-      .then(p => dispatch({ type: 'INDEX_PRODUCTS', payload: p, filterBy: filterTerm }))
+      .then(p => dispatch({ type: 'INDEX_PRODUCTS', payload: p, filterBy: filterTerm, start: pageStart, end: pageEnd }))
     }
   }
 

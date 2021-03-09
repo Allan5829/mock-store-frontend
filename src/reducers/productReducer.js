@@ -7,22 +7,22 @@ let productReducer = (state = {products: [], loading: false, sliceStart: 0, slic
         case('INDEX_PRODUCTS'):
             switch(action.filterBy) {
                 case('men'):
-                    return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
+                    return {...state, loading: false, sliceStart: action.start, sliceEnd: action.end, 
                         products: action.payload.filter(p => p.gender === "Men")}
                 case('women'):
-                    return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
+                    return {...state, loading: false, sliceStart: action.start, sliceEnd: action.end, 
                         products: action.payload.filter(p => p.gender === "Women")}
                 case('top'):
-                    return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
+                    return {...state, loading: false, sliceStart: action.start, sliceEnd: action.end, 
                         products: action.payload.filter(p => p.main_category === "Top")}
                 case('bottom'):
-                    return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
+                    return {...state, loading: false, sliceStart: action.start, sliceEnd: action.end, 
                         products: action.payload.filter(p => p.main_category === "Bottom")}
                 case('accessory'):
-                    return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
+                    return {...state, loading: false, sliceStart: action.start, sliceEnd: action.end, 
                         products: action.payload.filter(p => p.main_category === "Accessory")}
                 default:
-                    return {...state, loading: false, sliceStart: 0, sliceEnd: 8, 
+                    return {...state, loading: false, sliceStart: action.start, sliceEnd: action.end, 
                         products: action.payload}
             } 
         

@@ -10,27 +10,29 @@ import FilterContainer from './FilterContainer'
 class ProductsContainer extends Component {
 
     componentDidMount() {
-        this.props.getAllProducts(this.parseUrl()[0])
+        this.props.getAllProducts(this.parseUrl())
     }
 
     shouldComponentUpdate(nextProps) {
-        let next = this.parseUrl(nextProps.location.pathname)[0]
-        let current = this.parseUrl()[0]
-        if ( next !== current ) {
+        let next = this.parseUrl(nextProps.location)
+        let current = this.parseUrl()
+        if ( next[0] !== current[0] ) {
             this.props.getAllProducts(next)
-            //console.log("test")
         }
         return true
     }
 
-    parseUrl = (url = this.props.location.pathname) => {
+    parseUrl = (url = this.props.location) => {
+        let path = url.pathname
+        let search = url.search
         let result = []
-        //works for "/products/men?page=2"
-        if ( url.includes('?') ) {
-            result = url.split('/')[2].split('?')
-            result[1] = result[1].split('=')[1]
+        //works for examples like "/products/men?page=2"
+        if (search ) {
+            result = [path.split('?')[0].split('/')[2], search.split('=')[1] ]
+        } else if (path.includes('?')) {
+            result = [path.split('?')[0].split('/')[2] , path.split('=')[1] ]
         } else {
-            result = [url.split('/')[2], "1"]
+            result = [path.split('/')[2], '1']
         }
         return result
     }
