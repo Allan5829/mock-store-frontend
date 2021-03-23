@@ -2,7 +2,7 @@ import '../cssFolder/FilterContainer.css';
 import React, { Component } from 'react';
 import FilterCheckboxComponent from '../components/FilterCheckboxComponent'
 import { connect } from 'react-redux'
-import { sortProducts } from '../actions/productActions'
+import { sortProducts, updateCurrentPage } from '../actions/productActions'
 //import { filter } from 'minimatch';
  
 class FilterContainer extends Component {
@@ -62,6 +62,7 @@ class FilterContainer extends Component {
         sorting: event.target.value
       })
       this.props.sortProducts(this.state.sorting)
+      this.props.editSlice(1)
     }
   }
     
@@ -141,4 +142,4 @@ class FilterContainer extends Component {
   }
 }
 
-export default connect( null, { sortProducts } )(FilterContainer);
+export default connect( null, { sortProducts, updateCurrentPage } )(FilterContainer);

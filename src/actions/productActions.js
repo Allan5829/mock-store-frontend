@@ -2,20 +2,13 @@
 const URL = "http://localhost:3001" //using proxy causes error in addNewProduct
 
 export const getAllProducts = (params) => {
-    let filterTerm = params[0]
-    let pageStart = 0
-    let pageEnd = 8
-    if (params[1] > 1) {
-      pageStart = (params[1] - 1) * 8
-      pageEnd = params[1] * 8
-    }
-    return (dispatch) => {
-      dispatch({ type: 'LOADING_DID_MOUNT'})
-      fetch(URL + '/products')
-      .then(response => response.json())
-      .then(p => dispatch({ type: 'INDEX_PRODUCTS', payload: p, filterBy: filterTerm, start: pageStart, end: pageEnd }))
-    }
+  return (dispatch) => {
+    dispatch({ type: 'CURRENTLY_LOADING'})
+    fetch(URL + '/products')
+    .then(response => response.json())
+    .then(p => dispatch({ type: 'INDEX_PRODUCTS', payload: p, filterBy: params}))
   }
+}
 
 export const updateCurrentPage = (page) => {
     return (dispatch) => {
@@ -25,7 +18,7 @@ export const updateCurrentPage = (page) => {
 
 export const addNewProduct = (product) => {
     return (dispatch) => {
-      dispatch({ type: 'ADDING_PRODUCT'})
+      dispatch({ type: 'CURRENTLY_LOADING'})
       fetch(URL + '/products', {
         method: "POST",
         body: JSON.stringify(product),
@@ -41,7 +34,7 @@ export const addNewProduct = (product) => {
 
 export const deleteProduct = (id) => {
     return dispatch => {
-        dispatch({ type: "DELETING_PRODUCT" })
+        dispatch({ type: 'CURRENTLY_LOADING' })
         fetch(URL + `/products/${id}`, {
             method: "DELETE",
             headers: {
@@ -55,7 +48,7 @@ export const deleteProduct = (id) => {
 
 export const getProduct = (id) => {
     return (dispatch) => {
-      dispatch({ type: 'LOADING_DID_MOUNT'})
+      dispatch({ type: 'CURRENTLY_LOADING'})
       fetch(URL + '/products/' + id)
       .then(response => response.json())
       .then(p => dispatch({ type: 'FINDING_PRODUCT', payload: p }))

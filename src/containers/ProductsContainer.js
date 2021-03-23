@@ -1,7 +1,7 @@
 import '../cssFolder/ProductContainer.css';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllProducts, updateCurrentPage } from '../actions/productActions'
+import { getAllProducts,  updateCurrentPage } from '../actions/productActions'
 import ProductComponent from '../components/ProductComponent'
 import PageBar from '../components/PageBar'
 import FilterContainer from './FilterContainer'
@@ -10,14 +10,16 @@ import FilterContainer from './FilterContainer'
 class ProductsContainer extends Component {
 
     componentDidMount() {
-        this.props.getAllProducts(this.parseUrl())
+        let parameters = this.parseUrl()
+        this.props.getAllProducts(parameters[0])
+        this.editSlice(parameters[1])
     }
 
     shouldComponentUpdate(nextProps) {
         let next = this.parseUrl(nextProps.location)
-        let current = this.parseUrl()
-        if ( next[0] !== current[0] ) {
-            this.props.getAllProducts(next)
+        let parameters = this.parseUrl()
+        if ( next[0] !== parameters[0] ) {
+            this.props.getAllProducts(next[0])
         }
         return true
     }
@@ -60,7 +62,7 @@ class ProductsContainer extends Component {
             <div className="products-container">
                 <div className="products-page">
                     <div className="filter-container">
-                        <FilterContainer returnPageName={this.parseUrl}/>
+                        <FilterContainer returnPageName={this.parseUrl} editSlice={this.editSlice}/>
                     </div>
                     <div className="all-product"> 
                         { this.props.loading ? "Loading..." : allProducts }
