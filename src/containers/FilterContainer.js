@@ -15,7 +15,7 @@ class FilterContainer extends Component {
     sizeShow: false,
     sortbyShow: false,
     filters: [],
-    sorting: ""
+    sorting: "Sort By"
   }
 
   filterClicked = name => {
@@ -27,10 +27,6 @@ class FilterContainer extends Component {
         const filters = state.filters.filter(x => x !== name)
 
         return {filters}
-      })
-    } else if (sortBy.includes(name)) {
-      this.setState({
-        sorting: name
       })
     } else {
       this.setState(state => {
@@ -59,8 +55,12 @@ class FilterContainer extends Component {
     })
   }
 
-  handleSortProducts = () => {
-    if (this.state.sorting.length > 0) {
+  handleSortProducts = event => {
+    console.log(event.target.value, this.state.sorting)
+    if (this.state.sorting !== event.target.value) {
+      this.setState({
+        sorting: event.target.value
+      })
       this.props.sortProducts(this.state.sorting)
     }
   }
@@ -80,18 +80,12 @@ class FilterContainer extends Component {
     return (
       <div className="filter-container">
 
-        <button onClick={this.handleSortProducts}> Sort By </button>
-        <button> Filter </button>
-
-        <div className="sort-dropdown">
-          <button className="sort-dropdown" id="sortbyShow"  value={this.state.sortbyShow} onClick={this.handleStateSwitch} 
-          >Sort Products</button>
-
-          { this.state.sortbyShow ?
-            sortBy.map( x => {
-              return < FilterCheckboxComponent key={x} name={x} filterList={this.state.sorting} checked={this.filterClicked}/>
-          }) : null}
-        </div>
+        <select name="Sort By" id="sort products" onChange={this.handleSortProducts}>
+          <option value="Lowest">Price $-$$$</option>
+          <option value="Highest">Price $$$-$</option>
+          <option value="Newest">Newest</option>
+          <option value="Oldest">Oldest</option>
+        </select>
 
         <div className="gender-dropdown">
           { !filterTermsGender.includes(page) ? 
@@ -146,7 +140,5 @@ class FilterContainer extends Component {
     );
   }
 }
-
-let sortBy = ["Price $-$$$", "Price $$$-$", "Newest", "Oldest"]
 
 export default connect( null, { sortProducts } )(FilterContainer);

@@ -46,13 +46,13 @@ let productReducer = (state = {products: [], loading: false, sliceStart: 0, slic
         
         case ('SORT_PRODUCTS'):            
             switch(action.payload) {
-                case('Price $-$$$'):
+                case('Lowest'): //Price $-$$$
                     return {...state, sliceStart: 0, sliceEnd: 8, 
                         products: state.products.slice().sort((a, b) => {
                             return a.price - b.price 
                         })
                     }
-                case('Price $$$-$'):
+                case('Highest'): //Price $$$-$
                     return {...state, sliceStart: 0, sliceEnd: 8, 
                         products: state.products.slice().sort((a, b) => {
                             return b.price - a.price 

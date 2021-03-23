@@ -27,7 +27,7 @@ class ProductsContainer extends Component {
         let search = url.search
         let result = []
         //works for examples like "/products/men?page=2"
-        if (search ) {
+        if (search) {
             result = [path.split('?')[0].split('/')[2], search.split('=')[1] ]
         } else if (path.includes('?')) {
             result = [path.split('?')[0].split('/')[2] , path.split('=')[1] ]

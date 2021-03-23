@@ -3,3 +3,12 @@ Current todo list
 play around with routes to have the url change as expected
 add filter and sort functionality
 add pseudo cart functionality
+
+Restructure product reducer and actions to perform specific tasks.
+1 to fetch all products
+1 to set the page according to url parameter
+1 to filter products based on main url parameters
+1 to sort based on url parameter
+1 to filter array of parameters
+
+"chain" actions under component did mount in products container
